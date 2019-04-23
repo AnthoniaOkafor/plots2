@@ -385,7 +385,7 @@ class NotesController < ApplicationController
       @node.path = @node.generate_path
       @node.slug = @node.slug.split('token').first
       @node.publish
-      SubscriptionMailer.notify_node_creation(@node).deliver_now
+      SubscriptionMailer.notify_node_creation(@node).deliver_later
       flash[:notice] = "Thanks for your contribution. Research note published! Now, it's visible publically."
       redirect_to @node.path
     else
